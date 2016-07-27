@@ -45,6 +45,15 @@ def student_add():
                             first=first,
                             last=last,
                             github=github)
+
+
+@app.route("/project")
+def show_project_info():
+    """Show information about a project."""
+
+    title = request.args.get('title', 'Markov')
+    rows = hackbright.get_project_by_title(title) 
+    return render_template("project_info.html",rows=rows)
                   
    
 
